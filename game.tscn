@@ -1,0 +1,69 @@
+[gd_scene load_steps=6 format=3 uid="uid://fo0xri45qgvq"]
+
+[ext_resource type="Script" path="res://game.gd" id="1_q5ajv"]
+[ext_resource type="PackedScene" uid="uid://dsovctmgsaocy" path="res://hexagon.tscn" id="2_4arql"]
+[ext_resource type="PackedScene" uid="uid://bpa3rvq8kgvb4" path="res://player.tscn" id="3_rk05e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7u716"]
+size = Vector2(500, 800)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n75vr"]
+size = Vector2(500, 800)
+
+[node name="Game" type="Node"]
+script = ExtResource("1_q5ajv")
+hexagon_scene = ExtResource("2_4arql")
+
+[node name="Player" parent="." instance=ExtResource("3_rk05e")]
+
+[node name="HexagonTimer" type="Timer" parent="."]
+wait_time = 1.5
+
+[node name="Score" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 40
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Message" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -108.5
+offset_top = 72.0
+offset_right = 108.5
+offset_bottom = 127.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 40
+text = "Game Over"
+
+[node name="Line2D" type="Line2D" parent="."]
+position = Vector2(500, 400)
+scale = Vector2(6, 6)
+points = PackedVector2Array(4.5, -7.8, 9, 0, 4.5, 7.8, -4.5, 7.8, -9, 0, -4.5, -7.8, 4.5, -7.8, 9, 0)
+width = 1.0
+default_color = Color(0.685488, 0.635007, 0, 1)
+
+[node name="RotateLeft" type="TouchScreenButton" parent="."]
+position = Vector2(250, 400)
+shape = SubResource("RectangleShape2D_7u716")
+passby_press = true
+
+[node name="RotateRight" type="TouchScreenButton" parent="."]
+position = Vector2(750, 400)
+shape = SubResource("RectangleShape2D_n75vr")
+passby_press = true
+
+[connection signal="area_entered" from="Player" to="." method="_on_player_area_entered"]
+[connection signal="timeout" from="HexagonTimer" to="." method="_on_hexagon_timer_timeout"]
+[connection signal="pressed" from="RotateLeft" to="." method="_on_rotate_left_pressed"]
+[connection signal="released" from="RotateLeft" to="." method="_on_rotate_left_released"]
+[connection signal="pressed" from="RotateRight" to="." method="_on_rotate_right_pressed"]
+[connection signal="released" from="RotateRight" to="." method="_on_rotate_right_released"]

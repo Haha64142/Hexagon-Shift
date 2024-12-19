@@ -1,0 +1,67 @@
+[gd_scene load_steps=5 format=3 uid="uid://ctkytfn4t7re2"]
+
+[sub_resource type="GDScript" id="GDScript_cw1y5"]
+script/source = "extends Node
+
+signal home_screen_button_pressed
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta: float) -> void:
+	pass
+
+
+func _on_button_pressed() -> void:
+	home_screen_button_pressed.emit()
+"
+
+[sub_resource type="InputEventKey" id="InputEventKey_7pvpe"]
+device = -1
+keycode = 4194309
+
+[sub_resource type="InputEventKey" id="InputEventKey_t6etj"]
+device = -1
+keycode = 32
+unicode = 32
+
+[sub_resource type="Shortcut" id="Shortcut_5b6i0"]
+events = [SubResource("InputEventKey_7pvpe"), SubResource("InputEventKey_t6etj")]
+
+[node name="HomeScreen" type="Node"]
+script = SubResource("GDScript_cw1y5")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -337.0
+offset_top = 150.0
+offset_right = 337.0
+offset_bottom = 287.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 100
+text = "Hexagon Shift"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -121.5
+offset_top = 50.0
+offset_right = 121.5
+offset_bottom = 195.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 100
+shortcut = SubResource("Shortcut_5b6i0")
+text = "Play"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://dsovctmgsaocy"]
+
+[ext_resource type="Script" path="res://hexagon.gd" id="1_0rdhr"]
+
+[node name="Hexagon" type="Area2D"]
+position = Vector2(500, 400)
+script = ExtResource("1_0rdhr")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(4.55, -7.75, 9, 0, 4.5, 7.8, -4.5, 7.8, -9, 0, -4.55, -7.75, -4.15, -7.52, -8.5, 0, -4.25, 7.35, 4.25, 7.35, 8.5, 0, 4.15, -7.52)
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(4.5, -7.8, 9, 0, 4.5, 7.8, -4.5, 7.8, -9, 0, -4.5, -7.8)
+width = 1.0
+default_color = Color(0, 0.623529, 0.662745, 1)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
