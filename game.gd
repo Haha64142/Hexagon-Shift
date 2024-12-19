@@ -4,17 +4,25 @@ signal game_over
 
 @export var hexagon_scene: PackedScene
 var score = 0
+var difficulty
+var accel_rate
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
+
+func start_game() -> void:
 	score = 0
 	$Score.text = str(score)
 	$Score.show()
 	$HexagonTimer.wait_time = 1.5
 	$HexagonTimer.start()
 	$Message.hide()
-	Input.action_release("rotate_left")
-	Input.action_release("rotate_right")
+	if difficulty == 0:
+		accel_rate = 0.005
+	elif difficulty == 1:
+		accel_rate = 0.01
+	elif difficulty == 2:
+		accel_rate = 0.02
+	
+	print(accel_rate)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -44,7 +52,7 @@ func _on_hexagon_hit():
 func _on_hexagon_score():
 	score += 1
 	$Score.text = str(score)
-	var new_wait_time = $HexagonTimer.wait_time - 0.01
+	var new_wait_time = $HexagonTimer.wait_time - accel_rate
 	if new_wait_time >= 0.1:
 		$HexagonTimer.wait_time = new_wait_time
 
