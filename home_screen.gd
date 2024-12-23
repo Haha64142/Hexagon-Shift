@@ -8,17 +8,28 @@ var difficulty
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	pass
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("rotate_left"):
+		difficulty += 2
+		get_button_pressed_from_difficulty()
+	
+	if Input.is_action_just_pressed("rotate_right"):
+		difficulty += 1
+		get_button_pressed_from_difficulty()
+	
+
+func get_button_pressed_from_difficulty():
+	difficulty = difficulty % 3
 	if difficulty == 0:
 		_on_easy_pressed()
 	elif difficulty == 1:
 		_on_normal_pressed()
 	elif difficulty == 2:
 		_on_hard_pressed()
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
 
 
 func _on_play_button_pressed() -> void:

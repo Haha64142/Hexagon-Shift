@@ -25,10 +25,15 @@ func start_game() -> void:
 	print(accel_rate)
 
 
+func _ready() -> void:
+	Input.action_release("rotate_left")
+	Input.action_release("rotate_right")
+	Input.action_release("swap_sides")
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass
-
+	
 
 func _on_hexagon_timer_timeout() -> void:
 	var hexagon = hexagon_scene.instantiate()

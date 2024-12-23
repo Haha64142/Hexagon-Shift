@@ -8,6 +8,7 @@ var difficulty = 1
 func _ready() -> void:
 	$HomeScreen.home_screen_play_button_pressed.connect(create_game)
 	$HomeScreen.difficulty = difficulty
+	$HomeScreen.get_button_pressed_from_difficulty()
 	$HomeScreen._ready()
 
 
@@ -17,7 +18,7 @@ func _process(_delta: float) -> void:
 
 
 func create_game():
-	difficulty = $HomeScreen.difficulty
+	difficulty = get_child(0).difficulty
 	for child in get_children():
 		child.queue_free()
 	
@@ -29,6 +30,7 @@ func create_game():
 	
 
 func create_home_screen():
+	difficulty = get_child(0).difficulty
 	for child in get_children():
 		child.queue_free()
 	
@@ -36,4 +38,5 @@ func create_home_screen():
 	add_child(home_screen)
 	home_screen.home_screen_play_button_pressed.connect(create_game)
 	home_screen.difficulty = difficulty
+	home_screen.get_button_pressed_from_difficulty()
 	home_screen._ready()

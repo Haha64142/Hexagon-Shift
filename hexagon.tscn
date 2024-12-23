@@ -4,6 +4,7 @@
 
 [node name="Hexagon" type="Area2D"]
 position = Vector2(500, 400)
+collision_layer = 0
 script = ExtResource("1_0rdhr")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
