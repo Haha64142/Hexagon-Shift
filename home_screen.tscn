@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://ctkytfn4t7re2"]
 
-[ext_resource type="Script" path="res://home_screen.gd" id="1_74dcg"]
+[ext_resource type="Script" uid="uid://b7t71v7ypl2da" path="res://home_screen.gd" id="1_74dcg"]
 [ext_resource type="Theme" uid="uid://d4guokvj85fvx" path="res://button_standard_theme.tres" id="1_jk8ln"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_7pvpe"]

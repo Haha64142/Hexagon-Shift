@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dsovctmgsaocy"]
 
-[ext_resource type="Script" path="res://hexagon.gd" id="1_0rdhr"]
+[ext_resource type="Script" uid="uid://dxbc3almp1y1a" path="res://hexagon.gd" id="1_0rdhr"]
 
 [node name="Hexagon" type="Area2D"]
 position = Vector2(500, 400)

@@ -15,6 +15,8 @@ func _process(delta: float) -> void:
 	scale.x -= speed * delta
 	scale.y = scale.x
 	
+	#$Line2D.default_color = Color8(0, int(-1.6 * scale.x + 160), int(-1.7 * scale.x + 170))
+	
 	if scale.x < 1:
 		hexagon_score.emit()
 		queue_free()
